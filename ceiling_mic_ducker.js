@@ -58,6 +58,9 @@ const ATTACK_NUM_THRESHOLD = 3;
 // Number of consecutive VUmeter levels below release threshold before uncovering
 const RELEASE_NUM_THRESHOLD = 3;
 
+// Show an alert on the Touch10 or Navigator device every time the macro 
+// starts ducking the ceiling mics. Useful for initial setup and troubleshooting
+const SHOW_DUCKING_ALERT = false;
 
 /*
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -425,6 +428,7 @@ function fadeInAllCeilingMicGains() {
         'newValue': restoredMicGains
         }
         localCallout.status(gmm_status).post()
+        if (SHOW_DUCKING_ALERT) xapi.Command.UserInterface.Message.Alert.Clear();
       }
   }
 
@@ -445,6 +449,11 @@ function duckAllCeilingMicGains() {
     'newValue': restoredMicGains
     }
     localCallout.status(gmm_status).post()
+    if (SHOW_DUCKING_ALERT) xapi.Command.UserInterface.Message.Alert.Display({
+      Title: 'Ducking Active',
+      Text: 'Amplified Mic detected, ducking ceiling mics....',
+      Duration: 0
+    });
 }
 
 //currentCeilingMicGains

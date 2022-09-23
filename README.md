@@ -59,6 +59,10 @@ RELEASE_NUM_THRESHOLD: This is the number of consecutive VUmeter events with noi
 mics are no longer being used before fading back in the ceiling mic levels. Default is set to 3. Set it to a lower level if you want the fading in 
 to occur faster.  
 
+SHOW_DUCKING_ALERT: Set this constant to true if you wish to show an alert on the Touch10 or Navigator device every time the macro 
+starts ducking the ceiling mics. Useful for initial setup and troubleshooting.  
+
+
 ## Usage
 
 Once the macro has been configured and the constants described above are set, just activate the macro and it will automatically 
